@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090b13">
+  <meta name="description" content="MetaNova campaign dashboard — earn NOVA by completing verified campaign tasks.">
+  <title>MetaNova — Airdrop Campaign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="MetaNova home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-name">Meta<span>Nova</span></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">◈</span> Overview</button>
+        <button class="nav-item" data-view="campaigns"><span class="nav-icon">✳</span> Campaign tasks <span class="nav-count">4</span></button>
+        <button class="nav-item" data-view="referrals"><span class="nav-icon">↗</span> Referrals</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><div class="help-orb">✦</div><strong>Need a hand?</strong><p>Find answers about tasks and NOVA rewards.</p><button id="helpButton" class="text-link">Explore help <span>↗</span></button></div>
+        <div class="sidebar-user"><div class="avatar small-avatar">M</div><div class="user-meta"><strong id="sideUser">MetaNova member</strong><span>Campaign participant</span></div><button class="more-button" aria-label="Account menu">···</button></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-brand brand" id="mobileHome"><span class="brand-mark"><span></span><span></span><span></span></span><span class="brand-name">Meta<span>Nova</span></span></button>
+        <div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="breadcrumbCurrent">Overview</strong></div>
+        <div class="topbar-actions"><span class="network-pill"><i></i> Campaign live</span><button class="icon-button" id="notificationButton" aria-label="Notifications">♧<span class="notification-dot"></span></button><button class="profile-button" id="profileButton"><span class="avatar">M</span><span class="profile-label"><strong id="topUser">Member</strong><small id="linkedStatus">Connect your X account</small></span><span class="chevron">⌄</span></button></div>
+      </header>
+
+      <section class="view active" id="view-overview">
+        <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR WEB3 JOURNEY STARTS HERE</div><h1>Welcome to <span>MetaNova</span></h1><p class="subheading">Your next mission is closer than you think. Let’s make it count.</p></div><div class="season-tag"><span class="season-icon">✧</span><span><small>CAMPAIGN</small><strong>Genesis Season</strong></span></div></div>
+        <div class="hero-card">
+          <div class="hero-content"><div class="hero-kicker"><span class="live-pulse"></span> YOUR REWARD OVERVIEW</div><p class="hero-label">Available balance</p><div class="balance-line"><strong id="balanceAmount">1,250</strong><span>NOVA</span></div><p class="hero-description">Every verified mission moves you forward.</p><div class="hero-actions"><button class="button button-primary" data-goto="campaigns">Explore missions <span>↗</span></button><button class="button button-ghost" data-goto="referrals">Invite a friend</button></div></div>
+          <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="planet"><div class="planet-shine"></div><div class="planet-ring"></div></div><div class="spark spark-one">✦</div><div class="spark spark-two">✧</div><div class="spark spark-three">·</div><div class="art-caption"><span>✦</span> BUILT FOR WHAT'S NEXT</div></div>
+          <div class="hero-grid"></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon purple">✧</span><span class="stat-trend">↗ <span>+12%</span></span></div><p>Total earned</p><div class="stat-value">1,250 <small>NOVA</small></div><div class="stat-foot"><span class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>Across all missions</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon cyan">◈</span><span class="stat-chip">IN PROGRESS</span></div><p>Available missions</p><div class="stat-value">04 <small>tasks</small></div><div class="stat-foot"><span class="tiny-dot cyan-dot"></span><span>Ready for you to explore</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon green">✓</span><span class="stat-chip success-chip">COMPLETED</span></div><p>Completed missions</p><div class="stat-value">08 <small>tasks</small></div><div class="stat-foot"><span class="progress-track"><span></span></span><span>8 of 12 missions</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon amber">◷</span><span class="stat-chip pending-chip">IN REVIEW</span></div><p>Pending verification</p><div class="stat-value">02 <small>tasks</small></div><div class="stat-foot"><span class="tiny-dot amber-dot"></span><span>Usually reviewed soon</span></div></article>
+        </div>
+        <div class="content-grid">
+          <section class="panel missions-panel"><div class="panel-heading"><div><div class="eyebrow">MAKE YOUR MOVE</div><h2>Featured missions</h2></div><button class="text-link" data-goto="campaigns">View all <span>→</span></button></div><div id="featuredTasks" class="task-list"></div></section>
+          <section class="panel announcement-panel"><div class="panel-heading"><div><div class="eyebrow">THE LATEST</div><h2>Announcements</h2></div><span class="announcement-badge">NEW</span></div><article class="announcement-feature"><div class="announcement-art"><span class="announcement-star">✦</span><div class="announcement-orb"></div><span class="announcement-spark">✧</span></div><div class="announcement-date">OCT 18, 2026 <span>·</span> CAMPAIGN UPDATE</div><h3>Welcome to Genesis Season</h3><p>Your MetaNova journey begins here. Complete missions, invite friends, and collect NOVA as your verified activity grows.</p><button class="text-link" id="announcementMore">Read announcement <span>↗</span></button></article></section>
+        </div>
+        <footer class="footer"><span>© 2026 MetaNova</span><span><i class="footer-dot"></i> All systems operational <b>·</b> <button id="termsButton">Terms &amp; safety</button></span></footer>
+      </section>
+
+      <section class="view" id="view-campaigns">
+        <div class="page-heading"><div><div class="eyebrow">YOUR NEXT MOVE</div><h1>Campaign <span>missions</span></h1><p class="subheading">Complete missions and submit them for verification to earn NOVA.</p></div><div class="task-total"><strong>04</strong><span>ACTIVE MISSIONS</span></div></div>
+        <div class="filter-row"><div class="filter-tabs"><button class="filter-tab active" data-filter="all">All missions <span>4</span></button><button class="filter-tab" data-filter="social">Social <span>2</span></button><button class="filter-tab" data-filter="community">Community <span>1</span></button><button class="filter-tab" data-filter="explore">Explore <span>1</span></button></div><div class="search-box"><span>⌕</span><input id="taskSearch" type="search" placeholder="Search missions..." aria-label="Search missions"></div></div>
+        <div class="campaign-banner"><div class="banner-icon">✧</div><div><strong>Small actions. Meaningful rewards.</strong><p>Only verified activity can earn NOVA. Clicking a destination alone never counts as completion.</p></div><span class="banner-glow"></span></div>
+        <div id="allTasks" class="all-tasks-grid"></div>
+        <footer class="footer"><span>© 2026 MetaNova</span><span><i class="footer-dot"></i> All systems operational</span></footer>
+      </section>
+
+      <section class="view" id="view-referrals">
+        <div class="page-heading"><div><div class="eyebrow">GROW TOGETHER</div><h1>Bring your people. <span>Earn together.</span></h1><p class="subheading">Share your personal invite link and grow the MetaNova community.</p></div></div>
+        <div class="referral-hero panel"><div class="referral-copy"><div class="hero-kicker"><span class="live-pulse"></span> YOUR INVITE SPACE</div><h2>Good things are better <span>shared.</span></h2><p>Invite friends to join the campaign. Eligible referrals are tracked securely, and rewards are granted only after the required checks.</p><div class="referral-link-box"><span id="referralUrl">https://t.me/MetaNovaBot?start=mn_demo_8x2k</span><button id="copyReferral" class="button button-primary">Copy link <span>↗</span></button></div><div id="copyFeedback" class="inline-feedback" aria-live="polite"></div></div><div class="referral-illustration" aria-hidden="true"><div class="ref-orbit"></div><div class="ref-person person-one">M</div><div class="ref-person person-two">N</div><div class="ref-person person-three">✦</div><div class="ref-connect">↗</div></div></div>
+        <div class="stats-grid referral-stats"><article class="stat-card"><div class="stat-top"><span class="stat-icon purple">♧</span><span class="stat-chip">YOUR NETWORK</span></div><p>Invited friends</p><div class="stat-value">06 <small>people</small></div><div class="stat-foot"><span class="tiny-dot"></span><span>Demo preview data</span></div></article><article class="stat-card"><div class="stat-top"><span class="stat-icon green">✧</span><span class="stat-chip success-chip">REWARDS</span></div><p>Referral rewards</p><div class="stat-value">300 <small>NOVA</small></div><div class="stat-foot"><span class="tiny-dot green-dot"></span><span>Illustrative balance only</span></div></article><article class="stat-card"><div class="stat-top"><span class="stat-icon amber">◷</span><span class="stat-chip pending-chip">ELIGIBILITY</span></div><p>Pending referrals</p><div class="stat-value">02 <small>people</small></div><div class="stat-foot"><span class="tiny-dot amber-dot"></span><span>Awaiting eligibility checks</span></div></article></div>
+        <section class="panel referral-steps"><div class="panel-heading"><div><div class="eyebrow">HOW IT WORKS</div><h2>Three steps to grow</h2></div></div><div class="steps-grid"><div class="step-item"><span class="step-number">01</span><h3>Share your link</h3><p>Send your personal referral link to friends and your community.</p></div><div class="step-item"><span class="step-number">02</span><h3>They join MetaNova</h3><p>Your friends open the Mini App and complete the required account checks.</p></div><div class="step-item"><span class="step-number">03</span><h3>Eligibility is verified</h3><p>Rewards depend on campaign rules and server-side validation.</p></div></div></section>
+        <footer class="footer"><span>© 2026 MetaNova</span><span><i class="footer-dot"></i> All systems operational</span></footer>
+      </section>
+    </main>
+    <nav class="mobile-nav" aria-label="Mobile navigation"><button class="mobile-nav-item active" data-view="overview"><span>◈</span>Home</button><button class="mobile-nav-item" data-view="campaigns"><span>✳</span>Missions</button><button class="mobile-nav-item" data-view="referrals"><span>↗</span>Referrals</button></nav>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="modal" id="connectModal"><div class="modal-top"><span class="modal-mark">𝕏</span><button class="modal-close" data-close="connectModal" aria-label="Close">×</button></div><div class="eyebrow">ACCOUNT CONNECTION</div><h2>Connect your <span>X account</span></h2><p>Link your X account to participate in social missions. MetaNova will redirect you to the official X authorization page when backend OAuth is configured.</p><div class="notice-box"><span>ⓘ</span><span>This frontend preview does not perform real authorization. Never enter your X password into this page.</span></div><button class="button button-primary modal-main-button" id="connectContinue">Got it <span>→</span></button></dialog>
+  <dialog class="modal" id="taskModal"><div class="modal-top"><span class="modal-mark">✳</span><button class="modal-close" data-close="taskModal" aria-label="Close">×</button></div><div class="eyebrow">MISSION DETAILS</div><h2 id="taskModalTitle">Mission</h2><p id="taskModalDescription"></p><div class="reward-preview"><span>Potential reward</span><strong id="taskModalReward">+50 NOVA</strong></div><div class="notice-box"><span>✓</span><span id="taskModalNotice">Submitting sends this mission for verification. NOVA is not awarded until approval.</span></div><div class="modal-actions"><button class="button button-ghost" data-close="taskModal">Cancel</button><button class="button button-primary" id="submitTask">Submit for review <span>→</span></button></div></dialog>
+  <dialog class="modal" id="infoModal"><div class="modal-top"><span class="modal-mark">✦</span><button class="modal-close" data-close="infoModal" aria-label="Close">×</button></div><div class="eyebrow">METANOVA</div><h2 id="infoTitle">A quick note</h2><p id="infoBody"></p><button class="button button-primary modal-main-button" data-close="infoModal">Understood <span>→</span></button></dialog>
+  <script src="js/telegram.js"></script><script src="js/api.js"></script><script src="js/app.js"></script>
+</body>
+</html>
